@@ -1,9 +1,9 @@
-function deleteSymbol (InputString , deleteToSymbol){
+function deleteSymbol (inputString , deleteToSymbol){
 
     let result = '';
 
-    for (let i = 0 ; i < InputString.length; i++){
-        let symbol = InputString[i];
+    for (let i = 0 ; i < inputString.length; i++){
+        let symbol = inputString[i];
         if (deleteToSymbol.indexOf( symbol ) === -1 ){
             result += symbol
         }
