@@ -1,17 +1,17 @@
 'use strict'
 
-function cachedFunction (fn) {
+function cachedFunction(fn) {
     let cache = [];
 
-    return function (...args){
+    return function (...args) {
         let cacheKey = JSON.stringify(args);
         let resultCache = cache.find(entry => entry.key === cacheKey);
-        if (resultCache){
+        if (resultCache) {
             return resultCache.result
         }
         let result = fn(...args);
         cache.push({key: cacheKey, result});
-        if (cache.length > 10){
+        if (cache.length > 10) {
             cache.shift();
             console.log("Кэш после удаления первой записи:", cache);
         }
@@ -20,7 +20,7 @@ function cachedFunction (fn) {
     }
 }
 
-function add (a, b){
+function add(a, b) {
     console.log(` ${a} + ${b}`);
     return a + b;
 }
