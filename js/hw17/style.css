@@ -1,0 +1,21 @@
+.hidden{
+    display: none;
+}
+
+.flex{
+    display: flex;
+    padding-bottom: 50px;
+}
+
+#infoBox{
+    margin-left: 20px;
+}
+#buttonPromt{
+    margin-bottom: 50px;
+}
+.imgBox{
+    max-width: 1000px;
+}
+img{
+    width: 100%;
+}
