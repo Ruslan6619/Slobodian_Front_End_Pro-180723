@@ -11,6 +11,7 @@ function showCategories() {
     }
 }
 
+
 function showProducts(products, category) {
     const parentElement = document.getElementById('center');
     parentElement.innerHTML = '';
@@ -32,7 +33,9 @@ function showProducts(products, category) {
 function productDescription(product, category) {
     const parentElement = document.getElementById('center');
     const parentElementRight = document.getElementById('right');
+    const main = document.getElementById('main');
     parentElementRight.innerHTML = '';
+
 
     let element = document.createElement('div');
     element.textContent = `${product.name} $${product.price} ${product.description}`;
@@ -45,10 +48,13 @@ function productDescription(product, category) {
     btn.textContent = `${'Купить'}`;
     btn.style.backgroundColor = 'aqua'
     btn.addEventListener('click', function () {
-        alert(`Товар ${product.name} куплен за ${product.price}$`)
+        let purchaseMessage = document.createElement('div');
+        purchaseMessage.classList.add('purchasedGoods')
+        purchaseMessage.textContent = `Товар ${product.name} куплен за $${product.price}`;
         parentElement.innerHTML = '';
         parentElementRight.innerHTML = '';
 
+        main.appendChild(purchaseMessage);
 
     })
     parentElementRight.appendChild(btn);
@@ -63,6 +69,12 @@ document.getElementById('left').addEventListener('click', event => {
     if (event.target.nodeName === 'DIV') {
         const categoryKey = event.target.getAttribute('data-category');
         const categoryProducts = categories[categoryKey].products;
+        const purchaseMessage = document.querySelector('.purchasedGoods');
+
+        if (purchaseMessage) {
+            purchaseMessage.remove();
+        }
+
         showProducts(categoryProducts, categoryKey);
     }
 });
