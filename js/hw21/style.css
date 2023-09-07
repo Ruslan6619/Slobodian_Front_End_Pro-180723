@@ -1,0 +1,43 @@
+#main {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#main > div {
+    border: 1px solid black;
+    min-height: 100px;
+    min-width: 470px;
+}
+
+
+#fullName{
+    display: block;
+}
+
+#novaPoshta{
+    display: block;
+}
+
+#quantity{
+    display: block;
+}
+
+#city{
+    margin-bottom: 20px;
+}
+
+#cardPayment{
+    margin-bottom: 20px;
+}
+
+#comment{
+    margin-bottom: 20px;
+}
+
+#submitOrder{
+    padding: 10px;
+    background-color: aqua;
+}
+

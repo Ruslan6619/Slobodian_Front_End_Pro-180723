@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="wrapper">
+    <div id="main">
+        <div id="left"></div>
+        <div id="center"></div>
+        <div id="right"></div>
+    </div>
+
+    <div id="boxOrderForm" style="display: none;">
+        <h2>Оформление заказа</h2>
+        <form id="orderForm" >
+
+            <p >
+                <label for="fullName">ФИО покупателя:</label>
+                <input type="text" id="fullName" name="ФИО" required ><br>
+            </p>
+
+            <p>
+                <label for="city">Город (выбор из списка):</label>
+                <select id="city" name="Город" required >
+                    <option value="">Выберите город</option>
+                    <option value="Одесса">Одесса</option>
+                    <option value="Киев">Киев</option>
+                    <option value="Харьков">Харьков</option>
+                    <option value="Николаев">Николаев</option>
+                </select><br>
+            </p>
+
+            <p>
+                <label for="novaPoshta">Введите номер отделения Новой почты для отправки:</label>
+                <input type="number" id="novaPoshta" name="Новая почта" required min="1"><br>
+            </p>
+
+            <p>
+                <label>Выберите способ оплаты:</label><br>
+                <input type="radio" id="cashPayment" name="Оплата" value="Наложенный платеж" required >
+                <label for="cashPayment">Наложенный платеж</label><br>
+                <input type="radio" id="cardPayment" name="Оплата" value="Оплата банковской картой" required >
+                <label for="cardPayment" >Оплата банковской картой</label><br>
+            </p>
+
+            <p>
+                <label for="quantity">Количество приобретаемой продукции:</label>
+                <input type="number" id="quantity" name="Количество" required min="1" ><br>
+            </p>
+
+
+            <label for="comment">Комментарий к заказу:</label><br>
+            <textarea id="comment" name="Комментарий"></textarea><br>
+
+            <button type="submit" id="submitOrder">Подтвердить заказ</button>
+        </form>
+    </div>
+
+
+    <div id="orderSummary" style="display: none;">
+        <h2>Информация о заказе:</h2>
+        <div id="orderDetails"></div>
+    </div>
+
+
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
