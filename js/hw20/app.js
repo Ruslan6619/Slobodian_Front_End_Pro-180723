@@ -27,6 +27,8 @@ function showTable() {
         languagesItem.innerHTML = `Languages : ${selectedLanguages[0]}`
     } else if (selectedLanguages.length > 1) {
         languagesItem.innerHTML = `Languages : ${selectedLanguages.join(', ')}`
+    }else {
+        languagesItem.innerHTML = `Languages:`
     }
 
     userList.appendChild(languagesItem);
