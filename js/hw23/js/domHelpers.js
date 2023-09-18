@@ -20,6 +20,7 @@ function createElement(tagName, parentElement, content, attributes, handlers) {
     }
   }
 
+
   for (let eventName in handlers) {
     element.addEventListener(eventName, handlers[eventName]);
   }
@@ -45,22 +46,3 @@ function removeElement(element) {
   }
 }
 
-
-/*
-
-attributes = {
-  type: '',
-  value: '',
-  id: '',
-  ....
-  .....
-};
-
-
-handlers = {
-  click: () => {},
-  focus: () => {}
-  ...
-};
-
-*/
