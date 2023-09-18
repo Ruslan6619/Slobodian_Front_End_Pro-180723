@@ -37,11 +37,11 @@ function cleanElement(element) {
   }
 }
 
+
 function removeElement(element) {
-  if (typeof element === 'string') {
-    document.querySelector(element).remove();
-  } else {
-    element.remove();
+  const targetElement = typeof element === 'string' ? document.querySelector(element) : element;
+  if (targetElement && targetElement.parentNode) {
+    targetElement.parentNode.removeChild(targetElement);
   }
 }
 

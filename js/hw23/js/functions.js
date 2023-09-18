@@ -105,7 +105,6 @@ function showAddUserForm() {
 
 }
 
-let currentId = parseInt(localStorage.getItem('currentId')) || 3;
 
 function handleSaveUser() {
     const formElements = document.forms[0].elements;
@@ -119,10 +118,7 @@ function handleSaveUser() {
         name,
         lastName,
         email,
-        id: currentId
     };
-    currentId++
-    localStorage.setItem('currentId', currentId);
 
     const isValid = validate(user);
 
@@ -135,8 +131,14 @@ function handleSaveUser() {
             }
         }
     } else {
+        const maxId = users.reduce((max, user) => (user.id > max ? user.id : max), -1);
 
-        saveUser(user);
+        user.id = maxId + 1;
+
+        users.push(user);
+
+        updateStorage();
+        showUserRow(user);
         cleanElement('#form form');
     }
 }
@@ -160,43 +162,43 @@ function validate(user) {
     return true;
 }
 
-
-function saveUser(newUser) {
-    users.push(newUser);
-    updateStorage();
-    showUserRow(newUser);
-}
-
-
 function handleDeleteUser(event) {
     const userId = event.target.parentNode.getAttribute('data-id');
     const userToDelete = users.find(user => user.id === +userId);
 
     if (userToDelete) {
-        const confirmation = confirm(`Вы уверены, что хотите удалить пользователя ${userToDelete.name} ${userToDelete.lastName}?`);
+        const customConfirm = document.getElementById('custom-confirm');
+        const confirmYesButton = document.getElementById('confirm-yes');
+        const confirmNoButton = document.getElementById('confirm-no');
 
-        if (confirmation) {
+        customConfirm.style.display = 'block';
+
+        confirmYesButton.addEventListener('click', () => {
+            customConfirm.style.display = 'none';
             deleteUserById(+userId);
+        });
 
-        }
+        confirmNoButton.addEventListener('click', () => {
+            customConfirm.style.display = 'none';
+        });
     }
 }
 
+let currentId = 0;
 
 function deleteUserById(id) {
     const indexToRemove = users.findIndex(user => user.id === id);
-    users.splice(indexToRemove, 1);
-    removeElement(`div[data-user-id="${id}"]`);
-    updateStorage();
+    if (indexToRemove !== -1) {
+        users.splice(indexToRemove, 1);
+        removeElement(`div[data-user-id="${id}"]`);
+        updateStorage();
 
-    const isLastUser = id === currentId - 1;
-    if (isLastUser) {
-        currentId--;
+        currentId = users.length > 0 ? users[users.length - 1].id : 0;
 
         localStorage.setItem('currentId', currentId.toString());
     }
-
 }
+
 
 function updateStorage() {
     localStorage.setItem('users', JSON.stringify(users));
@@ -216,7 +218,6 @@ function handleEditUser(userId) {
         document.querySelector('input[name="lastName"]').value = userToEdit.lastName;
         document.querySelector('input[name="email"]').value = userToEdit.email;
 
-        // Создаем кнопку для сохранения изменений
         createElement(
             'input',
             '#form form',
