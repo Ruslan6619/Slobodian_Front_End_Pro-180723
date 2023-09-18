@@ -19,9 +19,9 @@ function showUserRow(user) {
         '',
         {type: 'button', value: 'Edit', 'data-type': 'edit'},
         {
-            click: () => handleEditUser(user.id) // Передаем идентификатор пользователя в обработчик
+            click: () => handleEditUser(user.id)
         }
-    ); // editBtnElement
+    );
 
     createElement(
         'input',
@@ -38,7 +38,7 @@ function showUserRow(user) {
         actionsElement,
         '',
         {type: 'button', value: 'View', 'data-type': 'view'}
-    ); // viewBtnElement
+    );
 
     viewButton.addEventListener('click', () => handleViewUser(user));
 }
@@ -55,7 +55,7 @@ function showAddUserForm() {
             type: 'text',
             placeholder: 'Enter login'
         }
-    ); // login input
+    );
 
     createElement(
         'input',
@@ -122,19 +122,15 @@ function handleSaveUser() {
         id: currentId
     };
     currentId++
-    // Сохраняем текущее значение счетчика id в localStorage
     localStorage.setItem('currentId', currentId);
 
     const isValid = validate(user);
 
     if (!isValid) {
-// Обработка ошибок валидации
         for (const field in user) {
             if (!user[field]) {
-                // Если поле пустое, установите красный цвет границы (или другой стиль)
                 formElements[field].style.borderColor = 'red';
             } else {
-                // Сбросьте стиль, если поле заполнено
                 formElements[field].style.borderColor = '';
             }
         }
@@ -193,13 +189,10 @@ function deleteUserById(id) {
     removeElement(`div[data-user-id="${id}"]`);
     updateStorage();
 
-    // Проверяем, является ли удаляемый пользователь последним
     const isLastUser = id === currentId - 1;
     if (isLastUser) {
-        // Уменьшаем currentId на 1
         currentId--;
 
-        // Сохраняем обновленное значение currentId
         localStorage.setItem('currentId', currentId.toString());
     }
 
@@ -214,13 +207,10 @@ function handleEditUser(userId) {
     const userToEdit = users.find(user => user.id === userId);
 
     if (userToEdit) {
-        // Очищаем форму редактирования
         cleanElement('#form form');
 
-        // Создаем поля для редактирования
         showAddUserForm();
 
-        // Заполняем поля формы данными пользователя
         document.querySelector('input[name="login"]').value = userToEdit.login;
         document.querySelector('input[name="name"]').value = userToEdit.name;
         document.querySelector('input[name="lastName"]').value = userToEdit.lastName;
@@ -247,29 +237,24 @@ function handleEditUser(userId) {
 }
 
 function handleSaveEditedUser(userToEdit) {
-    // Получаем значения из формы
     const login = document.querySelector('input[name="login"]').value;
     const name = document.querySelector('input[name="name"]').value;
     const lastName = document.querySelector('input[name="lastName"]').value;
     const email = document.querySelector('input[name="email"]').value;
 
-    // Обновляем данные пользователя
     userToEdit.login = login;
     userToEdit.name = name;
     userToEdit.lastName = lastName;
     userToEdit.email = email;
 
-    // Сохраняем отредактированные данные
     updateStorage();
     cleanElement('#form form');
-    // Обновляем отображение списка пользователей
     refreshUserList();
 
 }
 
 
 function refreshUserList() {
-    // Очистите и заново отобразите список пользователей
     const usersContainer = document.querySelector('#users');
     cleanElement(usersContainer);
     showRows(users);
@@ -277,10 +262,8 @@ function refreshUserList() {
 
 
 function handleViewUser(user) {
-    // Очищаем форму редактирования
     cleanElement('#form form');
 
-    // Создаем поля для отображения данных пользователя
     showAddUserForm();
 
     const loginInput = document.querySelector('input[name="login"]');
@@ -293,14 +276,12 @@ function handleViewUser(user) {
     lastNameInput.value = user.lastName;
     emailInput.value = user.email;
 
-    // Заблокируем поля для редактирования, сделав их неактивными
     loginInput.setAttribute('disabled', 'disabled');
     nameInput.setAttribute('disabled', 'disabled');
     lastNameInput.setAttribute('disabled', 'disabled');
     emailInput.setAttribute('disabled', 'disabled');
 
 
-    // Убираем кнопки "Save" и "Save Changes", если они есть в форме
     const saveButton = document.querySelector('input[value="Save"]');
     if (saveButton) {
         saveButton.remove();
