@@ -109,10 +109,16 @@ function showAddUserForm() {
 function handleSaveUser() {
     const formElements = document.forms[0].elements;
 
-    const login = formElements.login.value;
-    const name = formElements.name.value;
-    const lastName = formElements.lastName.value;
-    const email = formElements.email.value;
+    const loginInput = formElements.login;
+    const nameInput = formElements.name;
+    const lastNameInput = formElements.lastName;
+    const emailInput = formElements.email;
+
+    const login = loginInput.value.trim();
+    const name = nameInput.value.trim();
+    const lastName = lastNameInput.value.trim();
+    const email = emailInput.value.trim();
+
     const user = {
         login,
         name,
@@ -123,12 +129,29 @@ function handleSaveUser() {
     const isValid = validate(user);
 
     if (!isValid) {
-        for (const field in user) {
-            if (!user[field]) {
-                formElements[field].style.borderColor = 'red';
-            } else {
-                formElements[field].style.borderColor = '';
-            }
+
+        if (!login) {
+            loginInput.classList.add('error');
+        } else {
+            loginInput.classList.remove('error');
+        }
+
+        if (!name) {
+            nameInput.classList.add('error');
+        } else {
+            nameInput.classList.remove('error');
+        }
+
+        if (!lastName) {
+            lastNameInput.classList.add('error');
+        } else {
+            lastNameInput.classList.remove('error');
+        }
+
+        if (!email) {
+            emailInput.classList.add('error');
+        } else {
+            emailInput.classList.remove('error');
         }
     } else {
         const maxId = users.reduce((max, user) => (user.id > max ? user.id : max), -1);
@@ -238,10 +261,49 @@ function handleEditUser(userId) {
 }
 
 function handleSaveEditedUser(userToEdit) {
-    const login = document.querySelector('input[name="login"]').value;
-    const name = document.querySelector('input[name="name"]').value;
-    const lastName = document.querySelector('input[name="lastName"]').value;
-    const email = document.querySelector('input[name="email"]').value;
+    const loginInput = document.querySelector('input[name="login"]');
+    const nameInput = document.querySelector('input[name="name"]');
+    const lastNameInput = document.querySelector('input[name="lastName"]');
+    const emailInput = document.querySelector('input[name="email"]');
+
+    const login = loginInput.value.trim();
+    const name = nameInput.value.trim();
+    const lastName = lastNameInput.value.trim();
+    const email = emailInput.value.trim();
+
+    const editedUser = {
+        login,
+        name,
+        lastName,
+        email,
+    };
+
+    const isValid = validate(editedUser);
+
+    if (!isValid) {
+        if (login === '') {
+            loginInput.classList.add('error');
+        }
+
+        if (name === '') {
+            nameInput.classList.add('error');
+        }
+
+        if (lastName === '') {
+            lastNameInput.classList.add('error');
+        }
+
+        if (email === '') {
+            emailInput.classList.add('error');
+        }
+
+        return;
+    }
+
+    loginInput.classList.remove('error');
+    nameInput.classList.remove('error');
+    lastNameInput.classList.remove('error');
+    emailInput.classList.remove('error');
 
     userToEdit.login = login;
     userToEdit.name = name;
