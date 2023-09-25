@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+
+    <title>Модальное окно и Tooltip</title>
+</head>
+<body>
+
+
+    <button type="button" class="btn btn-primary mt-5"  data-bs-toggle="modal" data-bs-target="#staticBackdrop"    >
+         <span data-bs-toggle="tooltip" title="Tooltip on bottom" data-bs-placement="bottom">Модальное окно</span>
+    </button>
+
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet culpa deleniti eos ipsa sunt? Adipisci aliquam aperiam fugiat id, laboriosam magni modi placeat quia voluptas voluptatem. Culpa distinctio rerum tempora?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Understood</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <button id="showAlertBtn" class="btn btn-danger mt-5 ">Показать алерт</button>
+
+    <div class="alert alert-dark mt-2 d-none" role="alert" id="myAlert" >
+        Это Bootstrap алерт.
+    </div>
+
+
+
+
+
+
+    <div id="birthdayDate"></div>
+
+
+    <div class="container mt-5">
+        <div class="form-group">
+            <label for="birthdateInput">Введите вашу дату рождения (в формате DD.MM.YYYY):</label>
+            <input type="text" class="form-control mt-2" id="birthdateInput"  placeholder="Пример: 01.01.2000">
+        </div>
+        <button id="convertButton" class="btn btn-primary mt-3">Преобразовать</button>
+
+    </div>
+    <div id="error" class="alert alert-danger mt-2 d-none">Некорректный формат даты!</div>
+    <div id="result" class="alert alert-success mt-2 d-none"></div>
+
+
+
+
+
+<script src="../../node_modules/moment/min/moment.min.js"></script>
+<script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+
+<script  src="app.js"></script>
+
+
+
+</body>
+</html>
+
+
