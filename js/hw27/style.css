@@ -1,0 +1,30 @@
+.slider-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-button {
+    background-color: #23d114;
+    color: #fff;
+    border: none;
+    padding: 15px 25px;
+    margin: 0 30px;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.slider {
+    display: flex;
+    max-width: 1200px;
+}
+
+.slide {
+    max-width: 100%;
+    height: auto;
+    display: none;
+}
+
+.slide.active {
+    display: block;
+}
