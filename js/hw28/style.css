@@ -1,0 +1,102 @@
+body {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 90%;
+}
+
+button {
+    background-color: #fabe27;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px !important;
+    cursor: pointer;
+    font-size: 19px;
+}
+
+button:hover {
+    background-color: #777;
+}
+
+.tab-content {
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 100%;
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    cursor: pointer;
+    margin: 5px 0;
+    padding: 10px;
+    background-color: #eee;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+li:hover {
+    background-color: #ddd;
+}
+
+#character-details,
+#vehicle-details,
+#planet-details {
+    margin-top: 20px;
+}
+
+.flex{
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+}
+
+.logo{
+    max-width: 250px;
+    margin: auto;
+}
+img{
+    width: 100%;
+}
+
+.header{
+    background-color: black;
+    display: flex;
+}
+
+.logo2{
+    max-width: 150px;
+
+}
+
+.logo2 img {
+    max-height: 211px;
+    width: 142px;
+}
+
+.logo3{
+    max-width: 150px;
+}
+
+
+
+
+
+
+
+

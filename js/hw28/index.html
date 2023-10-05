@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Wars App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+
+</head>
+<body>
+
+
+<div class="wrapper">
+
+    <div class="header">
+
+        <div class="logo2">
+            <img src="images/starWars.jpg" alt="img">
+        </div>
+
+    <div class="logo">
+    <img src="images/CxGDxo.gif" alt="img">
+    </div>
+
+        <div class="logo3">
+            <img src="images/vader.jfif" alt="img">
+        </div>
+
+
+    </div>
+
+<div class="flex">
+    <div id="characters" class="tab-content">
+        <button id="loadCharactersButton">Персонажи</button>
+        <ul id="characters-list" disabled></ul>
+        <div id="character-details"></div>
+    </div>
+
+    <div id="vehicles" class="tab-content">
+        <button id="loadVehiclesButton">Транспорт</button>
+        <ul id="vehicles-list" disabled></ul>
+        <div id="vehicle-details"></div>
+    </div>
+
+    <div id="planets" class="tab-content">
+        <button id="loadPlanetsButton">Планеты</button>
+        <ul id="planets-list" disabled></ul>
+        <div id="planet-details"></div>
+    </div>
+</div>
+</div>
+
+
+<div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalTitle"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modalBody">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+
+<script src="app.js"></script>
+
+</body>
+</html>
+
+
+
+
+
