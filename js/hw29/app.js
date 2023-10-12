@@ -1,34 +1,9 @@
-function Person (name, age){
-    this.name = name;
-    this.age = age;
-}
-
-Person.prototype.displayInfo = function (){
-    return `Имя: ${this.name}, <br> Возраст: ${this.age}`;
-}
-
-function Car(brand, model, year){
-    this.brand = brand;
-    this.model = model;
-    this.year = year;
-    this.owner = null;
-}
-
-Car.prototype.displayInfo = function (){
-    if (this.owner){
-        return `Марка: ${this.brand}, <br> Модель: ${this.model}, <br> Год выпуска: ${this.year}, <br> Владелец, ${this.owner.displayInfo()}`;
-    }else {
-        return `Марка: ${this.brand},<br> Модель: ${this.model},<br> Год выпуска: ${this.year},`;
-    }
-}
-
-Car.prototype.setOwner = function (owner){
-    this.owner = owner;
-}
+document.getElementById('createPersonBtn').addEventListener('click', createPerson);
+document.getElementById('createCarBtn').addEventListener('click', createCar);
+document.getElementById('assignCarBtn').addEventListener('click', assignCar);
 
 let currentPerson = null;
 let currentCar = null;
-
 
 function createPerson(){
     const name = document.getElementById('name').value
@@ -61,10 +36,8 @@ function assignCar() {
         currentCar.setOwner(currentPerson);
         displayOutputCar(currentCar.displayInfo());
 
-        // Очистить форму человека
         document.getElementById('personForm').reset();
 
-        // Очистить форму автомобиля
         document.getElementById('carForm').reset();
     } else {
         displayOutputCar('Человека и автомобиль нужно создать перед присвоением.');
@@ -79,5 +52,3 @@ function displayOutputPerson(data){
 function displayOutputCar(data){
     document.getElementById('outputCar').innerHTML = data
 }
-
-
