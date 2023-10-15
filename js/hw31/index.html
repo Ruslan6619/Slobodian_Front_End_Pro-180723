@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamburger Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<form id="hamburgerForm">
+    <h1>Гамбургер</h1>
+    <label for="size">Розмер:</label>
+    <select id="size">
+        <option value="small">Маленький</option>
+        <option value="large">Большой</option>
+    </select>
+
+    <h4>Начинка:</h4>
+    <div class="d-flex">
+        <label for="cheese">Сир</label>
+        <input type="checkbox" id="cheese" class="stuffing" value="cheese">
+    </div>
+    <div class="d-flex">
+        <label for="salad">Салат</label>
+        <input type="checkbox" id="salad" class="stuffing" value="salad">
+    </div>
+
+
+    <div class="d-flex">
+        <label for="potato">Картошка</label>
+        <input type="checkbox" id="potato" class="stuffing" value="potato">
+    </div>
+
+    <h4>Добавки:</h4>
+
+
+    <div class="d-flex">
+        <label for="mayo">Майонез</label>
+        <input type="checkbox" id="mayo">
+    </div>
+
+
+    <div class="d-flex">
+        <label for="sauce">Приправа</label>
+        <input type="checkbox" id="sauce">
+    </div>
+
+
+    <button type="button" id="calculateButton">Рассчитать</button>
+</form>
+
+<div id="output"></div>
+
+<script src="Hamburger.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
