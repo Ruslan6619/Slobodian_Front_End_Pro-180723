@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Многоквартирные дома</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<h1>Многоквартирные дома</h1>
+
+<form id="houseForm">
+    <label for="numHouses">Количество домов:</label>
+    <input type="number" id="numHouses" required>
+
+    <button type="button" id="createHouse" >Создать дома</button>
+</form>
+
+<div id="houseData">
+    <h2>Данные про дом</h2>
+    <form id="apartmentForm"></form>
+
+    <form id="residentForm"></form>
+
+    <button type="button" id="displayButton" >Вывести данные про дом</button>
+
+</div>
+
+<script src="Person.js"></script>
+<script src="Apartment.js"></script>
+<script src="House.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
