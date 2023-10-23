@@ -15,6 +15,15 @@ function simulateTyping() {
     });
 }
 
+function endDialogRandomly() {
+    const random = Math.random();
+    if (random < 0.2) {
+        endChat();
+    } else {
+        resetTimeout();
+    }
+}
+
 async function receiveMessage(userMessage) {
     const now = new Date();
     const time = now.toLocaleTimeString();
@@ -36,6 +45,8 @@ async function receiveMessage(userMessage) {
         const browserMessage = `<div class="message-container"><p class="browser-message"><strong>Браузер (${responseTimeString}):</strong> ${response}</p></div>`;
         chatBox.innerHTML += browserMessage;
         chatBox.scrollTop = chatBox.scrollHeight;
+
+        endDialogRandomly();
     }
 }
 
