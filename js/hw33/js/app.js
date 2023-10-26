@@ -1,7 +1,7 @@
-const chatBox = document.getElementById('chatBox');
-const messageInput = document.getElementById('messageInput');
+const chatBox = document.getElementById("chatBox");
+const messageInput = document.getElementById("messageInput");
 let dialogEnded = false;
-document.getElementById('send').addEventListener('click', sendMessage);
+document.getElementById("send").addEventListener("click", sendMessage);
 
 function getRandomResponse() {
     const index = Math.floor(Math.random() * answers.length);
